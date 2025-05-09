@@ -16,6 +16,12 @@ class _CounterButtonState extends State<CounterButton> {
     });
   }
 
+  void _resetear() {
+    setState(() {
+      _contador = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,12 +30,30 @@ class _CounterButtonState extends State<CounterButton> {
         backgroundColor: Colors.cyan,
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Text('Pulsa el boton!'),
-          Text('$_contador'),
-          ElevatedButton(onPressed: _incremento, child: Text('PULSAR!'))
-        ],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              SizedBox(height: 40),
+              Text('Pulsa el boton!', style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
+              SizedBox(height: 20),
+              Text('$_contador', style: TextStyle(fontSize: 40),),
+              SizedBox(height: 20),
+              SizedBox(
+                height: 50,
+                width: 150,
+                child: ElevatedButton(onPressed: _incremento, style: ElevatedButton.styleFrom(backgroundColor: Colors.pinkAccent, foregroundColor: Colors.white), child: Text('PULSAR!', style: TextStyle(color: Colors.white),)),
+              ),
+              SizedBox(height: 20),
+              SizedBox(
+                height: 50,
+                width: 150,
+                child: ElevatedButton(onPressed: _resetear, style: ElevatedButton.styleFrom(backgroundColor: Colors.pinkAccent, foregroundColor: Colors.white), child: Text('RESETEAR', style: TextStyle(color: Colors.white),)),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
